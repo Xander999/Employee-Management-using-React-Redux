@@ -1,0 +1,128 @@
+.header{
+  height: 100px;
+  background-color: brown;
+  text-align: center;
+  width: 100%;
+  padding: 16px;
+  border: 2px solid rgb(212, 177, 177);
+  box-shadow: 0 2px 3px #e94747;
+}
+
+.App {
+  text-align: center;
+}
+
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.side-button{
+  width: 100%;
+  height: 40px;
+  background-color: brown;
+  text-align: center;
+  font: Arial;
+  font-size: medium;
+
+}
+
+#page-wrap {
+  text-align: center;
+
+  /* Prevent sidebar from showing a scrollbar on page */
+  overflow: auto;
+}
+
+/* Individual item */
+.bm-item {
+  display: inline-block;
+
+  /* Our sidebar item styling */
+  text-decoration: none;
+  margin-bottom: 30px;
+  color: #d1d1d1;
+  transition: color 1s;
+}
+
+/* Change color on hover */
+.bm-item:hover {
+  color: rgb(26, 4, 4);
+}
+
+/* The rest copied directly from react-burger-menu docs */
+
+/* Position and sizing of burger button */
+.bm-burger-button {
+  position: fixed;
+  width: 36px;
+  height: 25px;
+  left: 36px;
+  top: 46px;
+}
+
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+  background: #050503;
+}
+
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+}
+
+/* Color/shape of close button cross */
+.bm-cross {
+  background: #cfdce4;
+}
+
+/* General sidebar styles */
+.bm-menu {
+  background: #ad7909;
+  padding: 2.5em 1.5em 0;
+  font-size: 1.15em;
+  border: 4px solid rgb(161, 45, 45);
+}
+
+/* Morph shape necessary with bubble or elastic */
+.bm-morph-shape {
+  fill: #373a47;
+}
+
+/* Wrapper for item list */
+.bm-item-list {
+  color: #cc7127;
+}
+
+/* Styling of overlay */
+.bm-overlay {
+  background: rgba(131, 124, 30, 0.3);
+}
+

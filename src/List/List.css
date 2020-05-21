@@ -1,0 +1,46 @@
+.de1{
+    position: relative;
+    height: 90%;
+    background-color: rgb(197, 125, 125);
+    text-align: center;
+    width: 70%;
+    border: 2px solid rgb(51, 44, 44);
+    justify-content: center;
+    left: 180px;
+    top: 100px;
+  
+}
+
+.Employee {
+    width: 200px;
+    min-height: 10px;
+    padding: 16px;
+    text-align: center;
+    border: 1px solid #eee;
+    box-shadow: 0 2px 3px #ccc;
+    margin: 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.Employee:hover,
+.Employee:active {
+    background-color: #C0DDF5;
+}
+
+.box {
+    margin: 16px 0;
+    color: #ccc;
+}
+
+table {
+    border: 2px solid rgb(14, 3, 3);
+    margin: 0 auto; /* or margin: 0 auto 0 auto */
+  }
+
+#table-header {
+    display: table-header;
+    background-color: rgb(121, 23, 23);
+    font-weight: bold;
+    font-size: 15px;
+}

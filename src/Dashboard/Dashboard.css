@@ -1,0 +1,11 @@
+.de1{
+    position: relative;
+    height: 90%;
+    background-color: rgb(197, 125, 125);
+    text-align: center;
+    width: 70%;
+    border: 2px solid rgb(51, 44, 44);
+    justify-content: center;
+    left: 180px;
+    top: 100px;
+}
