@@ -4,6 +4,7 @@ import SideBar from "./sidebar";
 import Dashboard from './Dashboard/Dashboard.js';
 import Add from './Add/Add.js';
 import List from './List/List.js';
+import {BrowserRouter, Route} from 'react-router-dom'
 
 import {connect} from 'react-redux';
 
@@ -32,29 +33,31 @@ class App extends Component{
   render() {
 
 
-    let add=null;
-    let dashboard=null;
-    let list=null;
+    // let add=null;
+    // let dashboard=null;
+    // let list=null;
 
-    if(this.props.ctr===1){
-      dashboard=(
-          <Dashboard/>
-      );
-    }
-    if(this.props.ctr===2){
-      add=(
-          <Add/>
-         );
-    }
-    if(this.props.ctr===3){
-      list=(
-          <List/>
-      );
+    // if(this.props.ctr===1){
+    //   dashboard=(
+    //       <Dashboard/>
+    //   );
+    // }
+    // if(this.props.ctr===2){
+    //   add=(
+    //       <Add/>
+    //      );
+    // }
+    // if(this.props.ctr===3){
+    //   list=(
+    //       <List/>
+    //   );
 
-    }
+    // }
 
  
   return (
+    <BrowserRouter>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"></link>
     <div className="App">
       <SideBar 
       click={(opt)=>this.changeSide(opt)}/>
@@ -62,11 +65,15 @@ class App extends Component{
       <h1>Xander Application</h1>
       </div>
       <div className='main-component'>
-      {dashboard}
+      {/* {dashboard}
       {add}
-      {list}
+      {list} */}
+      <Route path="/Dashboard" component={Dashboard} />
+      <Route path="/Add" component={Add} />
+      <Route path="/List" component={List}/>
       </div>
     </div>
+    </BrowserRouter>
   );
 
 }
