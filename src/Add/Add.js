@@ -8,15 +8,17 @@ import {connect} from 'react-redux';
 class add  extends Component{
 
     // state={
-    //     id:'',
-    //     name:'',
-    //     desg:'',
-    //     doj:'' ,
-    //     result:''
+        // id:'',
+        // name:'',
+        // desg:'',
+        // doj:'' ,
+        // result:''
     // }
 
 
     postDataHandler = () =>{
+        this.props.loading=true;
+
         const data={
             id: this.props.idd,
             name: this.props.nmm,
@@ -39,6 +41,15 @@ class add  extends Component{
     }
     render(){
 
+        let load=null;
+        if(this.props.loading){
+            load=(
+                <div class="spinner-border" role="status">
+                     <span class="sr-only">Loading...</span>
+                </div>
+            );
+        }
+
     return(
         <div className="de1">
             <h2>Add Employee</h2>
@@ -60,12 +71,15 @@ class add  extends Component{
                 <td><input type="date" value={this.props.dte} onChange={(event) => this.props.adddoj(event.target.value)}></input></td>
             </tr>
             </table>
+            
            
-            <button onClick={this.postDataHandler}>Enter</button>
+            <button onClick={this.postDataHandler} type="button" class="btn btn-success">Enter</button>
             <b/> <b/>
+            {load}
             {/* <b>{this.state.result}</b> */}
                   
         </div>
+        
     );
 }
 
@@ -76,7 +90,8 @@ const mapStateToProps = state =>{
       idd: state.redadd.id,
       nmm: state.redadd.name,
       des: state.redadd.desg,
-      dte: state.redadd.doj
+      dte: state.redadd.doj,
+      loading: state.redadd.loading
     };
   };
   

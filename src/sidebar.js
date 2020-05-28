@@ -25,6 +25,7 @@ import {Link} from 'react-router-dom';
 export default props => {
   return (
     <Menu>
+      <Link to="/" className="side-button">Home</Link>
       <Link to="/Dashboard" className="side-button"> Dashboard</Link>
       <Link to="/Add" className="side-button">Add Employee</Link>
       <Link to="/List" className="side-button">List Employee</Link>

@@ -2,7 +2,8 @@ const initialState={
     id:'',
     name:'',
     desg:'',
-    doj:'' 
+    doj:'' ,
+    loading: false
 }
 
 const reducer_add = (state=initialState, action) => {
@@ -42,6 +43,7 @@ const reducer_add = (state=initialState, action) => {
             name:'',
             doj:'',
             desg:'',
+            loading: false
         }
     }
 

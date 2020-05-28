@@ -71,7 +71,8 @@ class dashboard extends Component{
         data:[],         
     };  
 
-    getDataHandler = () =>{
+    
+    componentDidMount = () =>{
         // axios.get("/data.json")
         // .then(response=>{
         //     const x=Object.values(response.data);
@@ -167,8 +168,9 @@ class dashboard extends Component{
     <div className='de1'>
         <h2>Dashboard</h2>
 
-        <button onClick={this.getDataHandler}>Refresh</button>
+        {/* <button onClick={this.getDataHandler}>Refresh</button> */}
         <Bar
+          height={80}
           data={dfd}
           options={{
             title:{
@@ -179,11 +181,12 @@ class dashboard extends Component{
             legend:{
               display:true,
               position:'right'
-            }
+            },
           }}
         />
 
           <Pie
+          height={80}
           data={dfd2}
           options={{
             title:{
@@ -200,6 +203,7 @@ class dashboard extends Component{
 
         <Line
           data={dfd3}
+          height={80}
           options={{
             title:{
               display:true,

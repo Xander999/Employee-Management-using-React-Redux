@@ -4,7 +4,9 @@ import SideBar from "./sidebar";
 import Dashboard from './Dashboard/Dashboard.js';
 import Add from './Add/Add.js';
 import List from './List/List.js';
-import {BrowserRouter, Route} from 'react-router-dom'
+import Home from './Home/home.js';
+import {BrowserRouter, Route} from 'react-router-dom';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import {connect} from 'react-redux';
 
@@ -57,17 +59,17 @@ class App extends Component{
  
   return (
     <BrowserRouter>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"></link>
     <div className="App">
+      <div className="header sticky-top">
       <SideBar 
       click={(opt)=>this.changeSide(opt)}/>
-      <div className="header">
       <h1>Xander Application</h1>
       </div>
       <div className='main-component'>
       {/* {dashboard}
       {add}
       {list} */}
+      <Route path="/" exact component={Home} />
       <Route path="/Dashboard" component={Dashboard} />
       <Route path="/Add" component={Add} />
       <Route path="/List" component={List}/>
