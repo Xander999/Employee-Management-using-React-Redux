@@ -4,6 +4,7 @@ import './Dashboard.css';
 import {Bar} from 'react-chartjs-2';
 import {Pie} from 'react-chartjs-2';
 import {Line} from 'react-chartjs-2';
+import {Spinner} from 'react-bootstrap';
 
 
 import * as actionCreators from '../store/actions/action2'
@@ -164,9 +165,18 @@ class dashboard extends Component{
        console.log(mp);
        dfd3.datasets[0].data=mp;
                   
+
+       let load=null;
+       if(this.props.ld){
+           load=(
+             <Spinner animation="border" variant="primary"/>
+           );
+       }
+
+
   return(
     <div className='de1'>
-        <h2>Dashboard</h2>
+        <h2>Dashboard</h2> {" "} {load}
 
         {/* <button onClick={this.getDataHandler}>Refresh</button> */}
         <Bar
@@ -217,16 +227,6 @@ class dashboard extends Component{
           }}
         />
         
-
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-             when an unknown printer took a galley of type and scrambled it to make a type
-              specimen book. It has survived not only five centuries, but also the leap into
-               electronic typesetting, remaining essentially unchanged. It was popularised 
-               in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
-               and more recently with desktop publishing software like Aldus PageMaker including 
-               versions of Lorem Ipsum.</p>
-                
               
     </div>
 );
@@ -235,7 +235,8 @@ class dashboard extends Component{
 
 const mapStateToProps = state =>{
   return {
-    dt : state.reddas.data
+    dt : state.reddas.data,
+    ld: state.reddas.load,
   };
 };
 

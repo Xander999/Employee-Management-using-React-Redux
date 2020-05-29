@@ -35,8 +35,15 @@ const reducer_add = (state=initialState, action) => {
             doj: action.val
         }
     }
+    if(action.type==='SHOW_LOADER'){
+        console.log('...................Loading Begins........');
+        return{
+            ...state,
+            loading:true
+        }
+    }
     if(action.type==='DATA_POSTED'){
-        console.log('Data Posted');
+        console.log('.................Data Posted');
         return{
             ...state,
             id:'',

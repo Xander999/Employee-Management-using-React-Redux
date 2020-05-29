@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './Add.css';
 // import axios from '../axios-emp';
+import {Spinner} from 'react-bootstrap';
 import * as actionCreators from '../store/actions/action'
 import {connect} from 'react-redux';
 
@@ -17,8 +18,6 @@ class add  extends Component{
 
 
     postDataHandler = () =>{
-        this.props.loading=true;
-
         const data={
             id: this.props.idd,
             name: this.props.nmm,
@@ -42,17 +41,16 @@ class add  extends Component{
     render(){
 
         let load=null;
+        console.log("ADD LOAD ::::"+this.props.loading);
         if(this.props.loading){
             load=(
-                <div class="spinner-border" role="status">
-                     <span class="sr-only">Loading...</span>
-                </div>
+              <Spinner animation="border" variant="primary"/>
             );
         }
 
     return(
         <div className="de1">
-            <h2>Add Employee</h2>
+            <h2>Add Employee</h2> {"  "} {load}
             <table id="table-header">
             <tr>
                 <td><label>Enter Employee Id</label></td>
@@ -75,8 +73,10 @@ class add  extends Component{
            
             <button onClick={this.postDataHandler} type="button" class="btn btn-success">Enter</button>
             <b/> <b/>
-            {load}
+            
             {/* <b>{this.state.result}</b> */}
+
+            
                   
         </div>
         

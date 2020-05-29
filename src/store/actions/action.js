@@ -9,22 +9,31 @@ export const postDataHandler1 = () =>{
     
 };
 
+export const showLoader = () =>{
+    return{
+        type: 'SHOW_LOADER'
+    };
+};
+
+
 // add synchronous method to asynchronus method
 //this method post the data and after that calls postDataHandler1 method to update the state that
 //data has been posted.
 export const postAsycnData =(data) => {
     return dispatch => {
+        dispatch(showLoader());   //loading is started........
         setTimeout(() => {
 
     axios.post("/data.json", data)
     .then(response=>{
         console.log(response);
         alert('Sucessfully Entered');
+        dispatch(postDataHandler1());  // loading is finished.....
         
     }).catch(err=>{
         console.log(err);
     });
-            dispatch(postDataHandler1());
-        },3000);
+        },5000);
+
     };
 };

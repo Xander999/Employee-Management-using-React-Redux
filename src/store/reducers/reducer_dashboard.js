@@ -1,14 +1,23 @@
 const initialState={
-   data:[]
+   data:[],
+   load:false
 }
 
 const reducer_dashboard = (state=initialState, action) => {
     
     if(action.type==='DATA_GET'){
-        console.log('Data Got');
+        console.log('...................Data Received........');
         return{
             ...state,
-            data : action.val
+            data : action.val,
+            load : false
+        }
+    }
+    if(action.type==='SHOW_LOADER_DASH'){
+        console.log('...................Loading Begins........');
+        return{
+            ...state,
+            load:true
         }
     }
 

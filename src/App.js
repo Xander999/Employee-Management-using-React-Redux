@@ -63,8 +63,9 @@ class App extends Component{
       <div className="header sticky-top">
       <SideBar 
       click={(opt)=>this.changeSide(opt)}/>
-      <h1>Xander Application</h1>
+      <h1><b>Xander Application</b></h1>
       </div>
+      <body>
       <div className='main-component'>
       {/* {dashboard}
       {add}
@@ -74,6 +75,7 @@ class App extends Component{
       <Route path="/Add" component={Add} />
       <Route path="/List" component={List}/>
       </div>
+      </body>
     </div>
     </BrowserRouter>
   );

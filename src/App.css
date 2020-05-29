@@ -126,3 +126,8 @@
   background: rgba(131, 124, 30, 0.3);
 }
 
+body{
+  background-image: url("./Home/bgimg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
