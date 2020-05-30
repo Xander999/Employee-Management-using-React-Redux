@@ -5,6 +5,9 @@ import {Spinner} from 'react-bootstrap';
 import * as actionCreators from '../store/actions/action'
 import {connect} from 'react-redux';
 
+import {} from 'react-bootstrap';
+import "bootstrap/dist/css/bootstrap.min.css";
+
 
 class add  extends Component{
 
@@ -44,31 +47,36 @@ class add  extends Component{
         console.log("ADD LOAD ::::"+this.props.loading);
         if(this.props.loading){
             load=(
+                <div>
               <Spinner animation="border" variant="primary"/>
+              <div class="alert alert-success" role="alert">
+             ...Data is being stored into Database using POST operation...
+                </div>
+              </div>
             );
         }
 
     return(
-        <div className="de1">
+        <div className="de1 shadow rounded ">
+            {/* <div class="shadow p-3 mb-5  rounded w-50 p-3"> */}
             <h2>Add Employee</h2> {"  "} {load}
-            <table id="table-header">
+            
             <tr>
-                <td><label>Enter Employee Id</label></td>
-                <td><input type='text' value={this.props.idd} onChange={(event) => this.props.addid(event.target.value)}></input></td>
+                <td><label class=" col-form-label">Enter Employee Id</label></td>
+                <td><input class="form-control form-control-sm" type='text' value={this.props.idd} onChange={(event) => this.props.addid(event.target.value)}></input></td>
             </tr>
             <tr>
-                <td><label>Enter Name</label></td>
-                <td><input type="text" value={this.props.nmm} onChange={(event) => this.props.addname(event.target.value)}></input></td>
+                <td><label class="col-form-label">Enter Name</label></td>
+                <td><input class="form-control form-control-sm" type="text" value={this.props.nmm} onChange={(event) => this.props.addname(event.target.value)}></input></td>
             </tr>
             <tr>
-                <td><label>Enter Designation</label></td>
-                <td><input type="text" value={this.props.des} onChange={(event) => this.props.adddesg(event.target.value)}></input></td>
+                <td><label class="col-form-label">Enter Designation</label></td>
+                <td><input class="form-control form-control-sm" type="text" value={this.props.des} onChange={(event) => this.props.adddesg(event.target.value)}></input></td>
             </tr>
             <tr>
-                <td><label>Enter Date of Joining</label></td>
-                <td><input type="date" value={this.props.dte} onChange={(event) => this.props.adddoj(event.target.value)}></input></td>
+                <td><label class="col-form-label">Enter Date of Joining</label></td>
+                <td><input class="form-control form-control-sm" type="date" value={this.props.dte} onChange={(event) => this.props.adddoj(event.target.value)}></input></td>
             </tr>
-            </table>
             
            
             <button onClick={this.postDataHandler} type="button" class="btn btn-success">Enter</button>

@@ -1,18 +1,11 @@
 .de1{
     position: relative;
-    background-color: rgb(197, 125, 125);
-    text-align: center;
-    border: 2px solid rgb(51, 44, 44);
-    justify-content: center;
-}
-
-#table-header {
-    display: table-header;
-    background-color: rgb(121, 23, 23);
-    font-weight: bold;
-    font-size: 15px;
-    border: 2px solid rgb(14, 3, 3);
-}
+    top: 40%;
+    left: 20%;
+    width: 60%;
+    height: 50%;
+    margin-top: 20px;
+    }
 
 .img-wrap {
     display: grid;

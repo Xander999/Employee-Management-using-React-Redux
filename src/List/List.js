@@ -3,7 +3,7 @@ import './List.css';
 import axios from '../axios-emp';
 import {Modal, Button} from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import {Spinner} from 'react-bootstrap';
 // import Emp from './Emp';
 
 
@@ -15,9 +15,11 @@ class list extends Component{
         result:'',
         value:'',
         datafetch: 'NO',
-        modalShow: false,
+        ld: false,
+        editdt:{}
     };
 
+   
     showEditModal =() => {
         return (
           <Modal
@@ -29,7 +31,7 @@ class list extends Component{
           >
             <Modal.Header closeButton>
               <Modal.Title id="contained-modal-title-vcenter">
-                EDIT EMPLOYEE DETAILS
+                Edit Employee Details for {this.state.editdt.id}
               </Modal.Title>
             </Modal.Header>
             <Modal.Body>
@@ -42,15 +44,15 @@ class list extends Component{
               <table class="table">
             <tr>
                 <td>Enter Name</td>
-                <td><input type="text"></input></td>
+                <td><input type="text" placeholder={this.state.editdt.name}></input></td>
             </tr>
             <tr>
                 <td>Enter Designation</td>
-                <td><input type="text"></input></td>
+                <td><input type="text" placeholder={this.state.editdt.desg}></input></td>
             </tr>
             <tr>
                 <td>Enter Date of Joining</td>
-                <td><input type="date"></input></td>
+                <td><input type="date" placeholder={this.state.editdt.doj}></input></td>
             </tr>
             </table>
 
@@ -58,10 +60,13 @@ class list extends Component{
             </Modal.Body>
             <Modal.Footer>
               <Button onClick={()=>{this.setState({modalShow:false})}}>Close</Button>
-              <Button>Save Changes</Button>
+              <Button onClick={this.editChange()}>Save Changes</Button>
             </Modal.Footer>
           </Modal>
         );
+      }
+      editChange = () =>{
+          
       }
 
     handleChange = (event) =>{
@@ -111,6 +116,7 @@ class list extends Component{
                  }
 
     getDataHandler = () =>{
+        this.setState({ld:true});
         axios.get("/data.json")
         .then(response=>{
 
@@ -120,6 +126,7 @@ class list extends Component{
             console.log(this.state.keys);
 
             this.setState({datafetch:'YES'}); //make sure data is fetched
+            this.setState({ld:false});
 
         }).catch(err=>{
             console.log(err);
@@ -127,16 +134,36 @@ class list extends Component{
         
     }
 
-    dataDelete = (event) => {
+    dataEdit = (event) => {
+        const zz=event.target.value.split(",");
+        const x={
+            id:zz[0],
+            name:zz[1],
+            desg:zz[2],
+            doj:zz[3]
+        }
+        console.log(x);
+        this.setState({modalShow:true})
+        this.setState({editdt:x})
         
-        alert("The Data Deletion Complete for "+event.target.value);
+    }
+
+    dataDelete = (event) => {
+        // console.log(event.target.value);        
+        alert("The Data Deletion Complete for "+event.target.value.split(",")[0]);
         
     }
 
     // getDataDelete =(event) =>{
-    //     const d=event.target.value;
+    //     const d=event.target.value.split(",");
+        //  dt={
+        //     id:d[0],
+        //     name:d[1],
+        //     desg:d[2],
+        //     doj:d[3]
+        // }
     //     console.log(d);
-        // axios.delete("/data.json", {data: d})
+        // axios.delete("/data.json", {data: dt})
         // .then(response=>{
         //     console.log(response);
         //     alert("Data Deleted");
@@ -151,16 +178,34 @@ class list extends Component{
         // const datas=this.state.data.map(data=>{
         //     return <Emp id={data.id} name={data.name} desg={data.desg}  doj={data.doj}/>;
         // });
+        let load=null;
+        if(this.state.ld){
+            load=(
+              <div>
+              <Spinner animation="border" variant="primary"/>
+              {"  "}
+              <div class="alert alert-success" role="alert">
+              ...Data is being loaded from Database using GET operation...
+             </div>
+             </div>
+            );
+        }
 
         const datas=this.state.data.map(data=>{
+            let x=[
+                data.id,
+                data.name,
+                data.desg,
+                data.doj
+            ]
             return (
             <tr>
                 <th scope="row">{data.id}</th>
                 <td>{data.name}</td>
                 <td>{data.desg}</td>
                 <td>{data.doj}</td>
-                <td><Button variant="success" size="sm" value={data.id} onClick={this.dataDelete}>Delete</Button></td>
-                <td><Button variant="success" size="sm" value={data.id} onClick={()=>{this.setState({modalShow:true})}}>Edit</Button></td>
+                <td><Button variant="success" size="sm" value={x} onClick={this.dataDelete}>Delete</Button></td>
+                <td><Button variant="success" size="sm" value={x} onClick={this.dataEdit}>Edit</Button></td>
             </tr>
         
             )
@@ -169,10 +214,11 @@ class list extends Component{
     return(
 
         
-        <div className="de1">
-            <h2>List Employee</h2>
-            <Button variant="success" size="sm" onClick={this.getDataHandler}>Fetch All Employees</Button>
+        <div className="de1 shadow rounded">
+            <h2>List Employee</h2> {"  "} {load}
+            <Button variant="success" size="sm" onClick={this.getDataHandler}>Fetch All Employees</Button> 
             <Button variant="success" size="sm" onClick={this.showAcending}>Ascending Order</Button>
+           
             <b/>
             <table class='table table-fixed table-responsive'>
             <thead class="thead-dark">
@@ -190,11 +236,11 @@ class list extends Component{
             </table>
 
             
-            <form onSubmit={this.getDataSearched}>
+            
             <label >Enter Employee Id :</label> <b/>
             <input type="text" value={this.state.value} onChange={this.handleChange}></input>
-            <input type="submit" value="Submit" />
-            </form>              
+            <Button onClick={this.getDataSearched}>Search</Button>
+            
 
             <this.showEditModal/>
         </div>

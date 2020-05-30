@@ -1,6 +1,5 @@
 import axios from '../../axios-emp';
 
-
 //create synchronus method to show data has been posted
 export const getDataHandler1 = (x) =>{
     return {

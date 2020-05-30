@@ -169,13 +169,19 @@ class dashboard extends Component{
        let load=null;
        if(this.props.ld){
            load=(
+             <div>
              <Spinner animation="border" variant="primary"/>
+             {"  "}
+             <div class="alert alert-success" role="alert">
+             ...Data is being loaded from Database using GET operation...
+            </div>
+            </div>
            );
        }
-
+    
 
   return(
-    <div className='de1'>
+    <div className='de1 shadow rounded'>
         <h2>Dashboard</h2> {" "} {load}
 
         {/* <button onClick={this.getDataHandler}>Refresh</button> */}
